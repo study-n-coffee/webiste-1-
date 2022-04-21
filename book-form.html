@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Now</title>
+    <link type="text/css" rel="stylesheet" href="style.css" />
+
+    <!--favicon-->
+    <link rel="icon" type="Image/png" href="Images/Logo.png" />
+  </head>
+  <body>
+    <div class="container">
+      <form onsubmit=sendEmail()>
+        <h1>Book A Driver</h1>
+        <input type="text" id="name" placeholder="Enter Your Name" required />
+        <input
+          type="email"
+          id="email"
+          placeholder="Enter Your Email Id"
+          required
+        />
+        <input
+          type="text"
+          id="phone"
+          placeholder="Enter Phone Number"
+          required
+        />
+        <input
+          type="text"
+          id="PickupTime"
+          placeholder="Enter The Pickup Time"
+          required
+        />
+        <input
+          type="text"
+          id="DropingTime"
+          placeholder="Enter The Droping Time"
+          required
+        />
+        <textarea
+          id="message"
+          rows="4"
+          placeholder="mention the Pick & drop place of your car.. 
+         
+          Example:
+          Pickup Place: Trivandrum International Airport
+          Drop: Eastfort "
+        ></textarea>
+        <button type="submit">SEND</button>
+      </form>
+    </div>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+      function sendEmail() {
+        Email.send({
+          Host: "smtp.elasticemail.com",
+          Username: "sapphirecalldrivers@gmail.com",
+          Password: "anil12345",
+          To: "sapphirecalldrivers@gmail.com",
+          From: document.getElementById("email").value,
+          Subject: "Driver/Car Booking",
+          Body: "Name: " + document.getElementById("name").value
+          +"<br/> Email: "+document.getElementById("email").value
+          +"<br/> Phone number: "+document.getElementById("phone").value
+          +"<br/> Pickup Time: "+document.getElementById("PickupTime").value
+          +"<br/> Dropping Time: "+document.getElementById("DropingTime").value
+          +"<br/> Message: "+document.getElementById("message").value
+        }).then((message) => alert("Details sent Successfully.Please expect a call from us"));
+      }
+    </script>
+  </body>
+</html>
